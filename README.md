@@ -1,8 +1,6 @@
 # Unreal Engine 5 Starter template
 
-Unreal Engine 5 Starter template for Git.
-
-A correct `git` setup example _with [`git-lfs`](https://git-lfs.github.com/)_ for Unreal Engine 5 (and 4) projects.
+Unreal Engine 5 Starter template for Git. A correct `git` setup example _with [`git-lfs`](https://git-lfs.github.com/)_ for Unreal Engine 5 and Unreal Engine 4 projects.
 
 ## Version Management Design and Conventions
 
@@ -52,7 +50,7 @@ Game assets in Unreal Engine formats, `.uasset` and `.umap`. Only those two file
 ## How to use
 
 1. Set up `git` and `git-lfs`.
-2. Copy `.gitignore` and `.gitattributes` to your project.
+2. Copy `.gitignore`, `.gitattributes` and/or `.editorconfig` to your project.
 
 ## Caveats
 
