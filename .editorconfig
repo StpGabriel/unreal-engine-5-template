@@ -1,0 +1,28 @@
+# EditorConfig helps developers define and maintain consistent
+# coding styles between different editors and IDEs
+# EditorConfig is awesome: https://EditorConfig.org
+
+root = true
+
+# top-most EditorConfig file
+
+# Baseline
+[*]
+charset = utf-8
+indent_style = space
+indent_size = 4
+tab_width = 4
+trim_trailing_whitespace = true
+end_of_line = lf
+insert_final_newline = true
+
+# ReSharper properties
+resharper_csharp_insert_final_newline = true
+
+# Documentation, Utils
+[*.{md,mdx,diff}]
+trim_trailing_whitespace = false
+
+# Windows shell scripts
+[*.{cmd,bat,ps1}]
+end_of_line = crlf
