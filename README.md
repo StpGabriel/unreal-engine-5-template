@@ -55,3 +55,10 @@ Game assets in Unreal Engine formats, `.uasset` and `.umap`. Only those two file
 ## Caveats
 
 Take special care when working with plugins. Plugin structure is not very well defined, so you will be able to mess the git repo up with big files if you commit them to a plugin directory.
+
+## Related resources
+
+### Unreal Engine Offical Documentation
+
+- [Activating Source Control](https://docs.unrealengine.com/5.0/en-US/source-control-in-unreal-engine/)
+- [Recommended Asset Naming Conventions](https://docs.unrealengine.com/5.0/en-US/recommended-asset-naming-conventions-in-unreal-engine-projects/)
