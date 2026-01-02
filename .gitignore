@@ -18,15 +18,28 @@
 *
 !*/
 
-# Do not ignore git files in the root of the repo.
-!/.git*
+# ####################################################
+# Common files and directories
+# ####################################################
 
-# Do not ignore any git files
+# Do not ignore git related files and directories.
+!/.git*
 !.git*
+!.github/**
+
+# Do not ignore Markdown files in the repo.
+!*.md
+
+# Do not ignore documentation related files.
+!Documentation/**
 
 # ####################################################
 # Unreal Engine
 # ####################################################
+
+# Ignore files and folders inside "Content" folder only, but keep anything starting with "MyProject".
+/Content/*
+!/Content/MyProject*
 
 # Do not ignore current project's `.uproject`.
 !/*.uproject
@@ -35,6 +48,10 @@
 !/Source/**
 !/Config/**
 !/Plugins/**
+
+# Ignore engine compiled source files.
+/Plugins/**/Binaries/*
+/Plugins/**/Intermediate/*
 
 # Only allow .uasset and .umap files from /Content dir.
 # They're tracked by git-lfs, don't forget to track other
@@ -54,9 +71,12 @@
 # Any file in /Raw dir will be managed by git lfs.
 !/Raw/**/*
 
+# Allow any files from /Resources dir.
+# Any file in /Resources dir will be managed by git lfs.
+!/Resources/**/*
+
 # Binary Files
 Binaries/*
-Plugins/*/Binaries/*
 
 # Builds
 Build/*
@@ -74,7 +94,6 @@ Saved/*
 
 # Compiled source files for the engine to use
 Intermediate/*
-Plugins/*/Intermediate/*
 
 # Cache files for the editor to use
 DerivedDataCache/*
@@ -88,6 +107,9 @@ DerivedDataCache/*
 
 # Ignore the Rider directory
 .idea
+
+# Do not ignore Rider run configurations
+!/.run/**
 
 # Windows
 ehthumbs.db
