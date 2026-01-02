@@ -1,8 +1,8 @@
+root = true
 # EditorConfig helps developers define and maintain consistent
 # coding styles between different editors and IDEs
 # EditorConfig is awesome: https://EditorConfig.org
 
-root = true
 
 # top-most EditorConfig file
 
@@ -17,6 +17,7 @@ end_of_line = lf
 insert_final_newline = true
 
 # ReSharper properties
+resharper_cpp_wrap_lines = false
 resharper_csharp_insert_final_newline = true
 
 # Documentation, Utils
@@ -26,3 +27,8 @@ trim_trailing_whitespace = false
 # Windows shell scripts
 [*.{cmd,bat,ps1}]
 end_of_line = crlf
+
+# YAML files
+[*.{yaml,yml}]
+indent_size = 2
+tab_width = 2
