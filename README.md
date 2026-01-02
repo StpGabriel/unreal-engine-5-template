@@ -1,76 +1,116 @@
-# Unreal Engine 5 Starter template
+# Unreal Engine 5 Starter Template
 
-Unreal Engine 5 Starter template for Git. A correct `git` setup example _with [`git-lfs`](https://git-lfs.github.com/)_ for Unreal Engine 5 and Unreal Engine 4 projects.
+A Git template for Unreal Engine 5 projects.
 
-## Version Management Design and Conventions
+## Getting Started
 
-This template implies some conventions to be used correctly, which are discussed below. You should be able copy and paste them into your project's `README.md` if you want to.
+1. Use this template to create a new repository **OR** clone this repository to your local machine.
+2. Change the default **MyProject** name to reflect your project name in:
+    - Markdown files (README.md, CONTRIBUTION.md, ... etc.)
+    - Directories (Raw, Source, Content)
+    - The .gitignore file
+3. Delete everything above this line.
+4. Have fun!
 
-> If you are using `git` with Unreal Engine, you might want to also
-> enable [One File Per Actor](https://dev.epicgames.com/documentation/en-us/unreal-engine/one-file-per-actor-in-unreal-engine)
-> feature, as it provides a more atomic level versioning flow.
+<hr>
 
-### Repo Structure
+# MyProject
+
+## Table of Contents
+
+> [1. Git Setup](#1-git-setup)<br/>
+> [2. Directory Structures](#2-directory-structures)<br/>
+> [3. Contribution](#3-contribution)<br/>
+
+## 1. Git Setup
+
+A correct `git` setup example _with [`git-lfs`](https://git-lfs.github.com/)_ for Unreal Engine 5.
+
+## 2. Directory Structures
+
+With `git`, you might want to also enable [One File Per Actor](https://dev.epicgames.com/documentation/en-us/unreal-engine/one-file-per-actor-in-unreal-engine) feature, as it provides a more atomic level versioning flow.
+
+### 2.1 Repo Structure
 
 - `/Build`
 - `/Config`
 - `/Content`
-    - `/MyGame`
-    - `/MyGameDLC_01`
+    - `/MyProject`
+    - `/MyProjectDLC_01`
+- `/Documentation`
 - `/Plugins`
 - `/Raw`
-    - `/MyGame`
-    - `/MyGameDLC_01`
+    - `/MyProject`
+    - `/MyProjectDLC_01`
 - `/Source`
+    - `/MyProjectEditor`
+    - `/MyProjectGame`
+- `/Resources`
     - `/Editor`
     - `/Game`
 
-> `git-lfs` management rules are mostly defined for file types, and not _paths_, however there can entire paths marked to be managed by `git-lfs`. Without a special note, expect only type-based rules apply to a directory.
+> `git-lfs` management rules are mostly defined for file types, and not _paths_ however, there can entire paths marked to be managed by `git-lfs`. Without a special note, expect only type-based rules apply to a directory.
 
-#### `/Build`
+`/Build`
 
 Holds files needed for building the engine or game, including files necessary for creating platform-specific builds.
 
-#### `/Config`
+`/Config`
 
 Configuration files for setting values that control engine behavior. Values set in the game project Config files override the values set in the `Engine\Config` directory.
 
-#### `/Content`
+`/Content`
 
 Holds content for the engine or game, including asset packages and maps.
 
-#### `/Plugins`
+`/Documentation`
+
+Holds content for the documentations, like README.md or CONTRIBUTION.md.
+
+`/Plugins`
 
 Game plugins. Every plugin lives in a subdirectory of the `/Plugins` dir. A plugin internal directory structure is not strictly documented, so there are no assumptions on how a plugin is structured.
 It may be useful to use git submodules to manage plugins in a more robust manner.
-It is expected that each plugin will have it's own `.gitignore` file in it's subdirectory, as well other required specific git tweaks.
+It is expected that each plugin will have its own `.gitignore` file in its subdirectory, as well other required specific git tweaks.
 
-#### `/Raw`
+`/Raw`
 
 **This directory is managed entirely by `git-lfs`.**
 
 `/Raw` is a directory where you store assets in their source formats, in contrast to `/Content`, where assets are stored in the engine format (after the import). Having an asset in a source format is useful when you're still making updates to it. It may be a good idea to also have separate repos for managing work-in-progress assets (maybe in smaller collections or even idividually).
 
-#### `/Source`
+`/Source`
 
 C++ source code is stored under the `/Source` path. As with most other directories, this directory is managed by standard git (and not `git-lfs`). That means no blobs. Do not put here any `.dll`s, `.exe`s, `.zip`s and other binaries. Only text files are allowed.
 Generated text files can reside in the local `/Source` dir, but should be ignored by git with additional entries in `.gitignore`.
 
-#### `/Source/Editor`
+`/Source/MyProjectEditor`
 
 Source files used by just the editor.
 
-#### `/Source/Game`
+`/Source/MyProjectGame`
 
 Source files in a game project directory are organized by module; one directory per module.
 
-### Content Structure
+`/Resources`
 
-All game content is placed in a sub-folder. eg. __Content/MyGame/UI/...__ This helps in migrating between projects and splitting your content from marketplace packs that are added like __Content/MyMarketplacePack/...__
+Project and Editor related resources. This directory is managed by `git-lfs`.
+
+`/Resources/Editor`
+
+Resource files used by the editor. For example, splash images.
+
+`/Resources/Game`
+
+Resource files used by the game, but not from the content browser. For example, these files can be images or assets used to build the game.
+
+### 2.2 Content Structure
+
+All game content is placed in a sub-folder. eg. __Content/MyProject/UI/...__ This helps in migrating between projects and splitting your content from FAB packs that are added like __Content/MyFabPack/...__
 
 When testing out local assets that are not ready to be used by other members of your team (or perhaps never should be) you can put them in your __Developer__-folder. You can enable this folder in the view options of the Content Browser. These assets will not show up in searches by other developers.
 
-- `/MyGame`
+- `/MyProject`
     - `/AI`
     - `/Art`
         - `/Characters`
@@ -84,6 +124,7 @@ When testing out local assets that are not ready to be used by other members of 
         - `/SFX`
     - `/Characters`
     - `/Core`
+    - `/Editor`
     - `/FX`
         - `/Art`
     - `/Input`
@@ -98,52 +139,48 @@ When testing out local assets that are not ready to be used by other members of 
         - `/Fonts`
         - `/Materials`
 
-#### `/Art`
+`/Art`
 
 Art related assets, except UI/FX.
 
-#### `/Audio`
+`/Audio`
 
 Audio related assets. `/Data` folder can be used for __SoundClasses__ or any other sound related logic.
 
-#### `/Core`
+`/Core`
 
 The core gameplay logic, such as __GameInstance__ or __GameMode__.
 
-#### `/FX`
+`/Editor`
+
+Any Editor related content, logic and resource.
+
+`/FX`
 
 Contains various particle effects.
 
-#### `/Input`
+`/Input`
 
 All player input related logic.
 
-#### `/Movies`
+`/Movies`
 
 Pre-rendered movies. This directory also used by the [Async Loading Screen](https://www.fab.com/listings/f8aabb9a-7c96-4f79-97ff-04bcc146e595) plugin.
 
-#### `/Shared`
+`/Shared`
 
 Commonly used resources, such as __Master Materials__.
 
-#### `/UI`
+`/UI`
 
 Any UI related content, logic and resource.
 
-### Marketplace Importing
+### 2.3 FAB Importing
 
-It’s recommended to use a dedicated Marketplace content project to import the packs first. This is your staging area before migrating pieces into your main project. This lets you review and filter out unwanted content early.
+It’s recommended to use a dedicated FAB content project to import the packs first. This is your staging area before migrating pieces into your main project. This lets you review and filter out unwanted content early.
 
-## How to use
+> **Note:** To help maintain a clean project and Git structure, this template only includes directories from the **Content** directory that starts with **MyProject**. For example, the **MyProjectDLC_01** directory will be included, but the automatically generated **Developers** or **Collections** directory won't be included by default. You can change this behavior by modifying the **.gitignore** file.
 
-1. Set up `git` and `git-lfs`.
-2. Copy the files and folders to your project. All of them in one go or selectively as you wish.
-3. Rename directories starts with `MyGame` to your project's name.
+## 3. Contribution
 
-## Related resources
-
-### Unreal Engine Offical Documentation
-
-- [Activating Source Control](https://dev.epicgames.com/documentation/en-us/unreal-engine/source-control-in-unreal-engine)
-- [Recommended Asset Naming Conventions](https://dev.epicgames.com/documentation/en-us/unreal-engine/recommended-asset-naming-conventions-in-unreal-engine-projects)
-- [Directory Structure](https://dev.epicgames.com/documentation/en-us/unreal-engine/unreal-engine-directory-structure)
+- [MyProject - Contribution Guidelines](CONTRIBUTION.md)
